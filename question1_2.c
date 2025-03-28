@@ -85,6 +85,7 @@ box* decompression(box* compressee) {
          return decompressed;
           
 }
+
 // j'ai creé cette fonction pour afficher la liste au-dessus (decompressed)
 void afficherDecompresse(box* debut) {
          if (!debut) {
@@ -101,6 +102,31 @@ void afficherDecompresse(box* debut) {
          }
          printf("\n");
 }
+
+// fonction pour comparer les deux listes
+int islongue(box* originalList , box* compressedList){
+    int originalListlength = 0;
+    int compressedListlength = 0 ;
+    box* count = originalList;
+    while (count!=NULL){
+        originalListlength++;
+        count = count->next;
+    }
+    
+    count = compressedList;
+    while (count!=NULL){
+        compressedListlength++;
+        count = count->next;
+    }
+
+    if (originalListlength > compressedListlength){
+        printf("La compression est plus efficace.\n");
+    }else{
+        printf("La compression est plus longue que l'originale.\n");
+    }
+    return 0;
+}
+
 // fonction pour libérer la mémoire
 void libererListe(box* debut) {
          box* temp;
@@ -142,11 +168,13 @@ int main() {
          box* decompressed = decompression(compressee);
          printf("Liste decompresser : ");
          afficherDecompresse(decompressed);
-
+         // test la compression
+         islongue(liste,compressee);
          // liberation de la mémoire
          libererListe(liste);
          libererListe(compressee);
          libererListe(decompressed);
+
 
          return 0;
 }
