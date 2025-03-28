@@ -104,7 +104,7 @@ void afficherDecompresse(box* debut) {
 }
 
 // fonction pour comparer les deux listes
-int islongue(box* originalList , box* compressedList){
+void islongue(box* originalList , box* compressedList){
     int originalListlength = 0;
     int compressedListlength = 0 ;
     box* count = originalList;
@@ -124,7 +124,6 @@ int islongue(box* originalList , box* compressedList){
     }else{
         printf("La compression est plus longue que l'originale.\n");
     }
-    return 0;
 }
 
 // fonction pour libérer la mémoire
